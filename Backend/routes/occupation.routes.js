@@ -8,23 +8,26 @@ const db = require("../database/config");
 //const security = require('../database/security');
 
 occupation.post('/save', (req, res) => {
-    db.sequelize.query("CALL sp_occupation_save(:id, :occupation_name)", {
+    db.sequelize.query("CALL sp_user_add(:fullnames, :address, :contact, :age)", {
         replacements: {
-            id: parseInt(req.body.id),
-            occupation_name: req.body.occupation_name,
+         
+            fullnames: req.body.fullnames,
+            address: req.body.address,
+            contact: req.body.contact,
+            age: req.body.age,
         }
     }).then(data => {
         ret = data[0]["_ret"];
         if (ret === "add_successfully") {
-            res.send({error: false, message: 'occupation_add_successfully'});
+            res.send({error: false, message: 'user_add_successfully'});
         } 
         else if (ret === "edit_successfully") {
-            res.send({error: false, message: 'occupation_updated_successfully'});
-        } else if (ret === "invalid_occupation_name_duplicate") {
-            res.send({error: false, message: 'invalid_occupation_name_duplicate'});
+            res.send({error: false, message: 'user_updated_successfully'});
+        } else if (ret === "invalid_user_duplicate") {
+            res.send({error: false, message: 'invalid_user_duplicate'});
         }
         else {
-            res.send({error: false, message: 'Unknown Error.'});
+            res.send({error: false, message: 'user_added_successfully.'});
         }
     }).catch(err => {
         res.send({ error: true, message: `Error 767: ${err}` });
