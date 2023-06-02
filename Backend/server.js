@@ -30,6 +30,7 @@ const Affiliate_Checklist = require("./routes/affiliation_checklist.routes");
 const Profile = require("./routes/profile.routes");
 const Profile_Checklist = require("./routes/profile_checklist.routes");
 const Address = require("./routes/address.routes");
+const Account = require("./routes/account.routes");
 
 
 // File Upload API
@@ -48,6 +49,7 @@ app.use("/occupation_checklist", Occupation_Checklist);
 app.use("/profile", Profile);
 app.use("/profile_checklist", Profile_Checklist);
 app.use("/address", Address);
+app.use("/account", Account);
 
 app.get('/', function (req, res) {
     res.statusCode = 200;

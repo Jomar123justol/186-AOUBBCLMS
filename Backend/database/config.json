@@ -4,7 +4,7 @@
         "dbConfig": {
             "driver": "mysql",
             "user": "root",
-            "database": "users",
+            "database": "bisubilarlms",
             "password": "",
             "host": "localhost",
             "port": "3306",
